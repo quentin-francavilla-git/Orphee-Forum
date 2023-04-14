@@ -1,0 +1,7 @@
+orphee
+main/migrations/__pycache__/
+main/__pycache__/
+.DS_Store
+main/.DS_Store
+static/.DS_Store
+staticfiles/dist/.DS_Store

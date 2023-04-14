@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <link rel="stylesheet" href="../../static/dist/css/base.css" />
+        <link rel="stylesheet" href="../../../static/dist/css/components.css" />
+    </head>
+
+    <body>
+        <div class="navbar">
+            <a href="../..">
+                <img
+                    class="logo"
+                    src="../../static/dist/img/logo.png"
+                    width="40px"
+                />
+                <img
+                    class="logo_text"
+                    src="../../static/dist/img/logo-text.png"
+                    width="250px"
+                />
+            </a>
+            <div class="links">
+                {% if user.is_authenticated %}
+                <a href="/messages">Messagerie</a>
+                {% endif %}
+                <a href="/topics">Forum</a>
+                {% if user.is_authenticated %}
+                <a href="/personal_topics">Mes topics</a>
+                <a href="/account">Bienvenue, {{ user }}</a>
+                {% else %}
+                <a href="/register">S'inscrire</a>
+                <a href="/login">Se connecter</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <!-- Content Wrapper. Contains page content -->
+            {% block content_wrapper %}{% endblock %}
+            <!-- /.content-wrapper -->
+        </div>
+
+        <!-- REQUIRED SCRIPTS -->
+        <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+        {#<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>#}
+        {#<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>#}
+
+        <script src="{% static 'plugins/react/react.development.js' %}"></script>
+        <script src="{% static 'plugins/react/react-dom.development.js' %}"></script>
+        <!-- JSX support-->
+        {#<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>#}
+        <script src="{% static 'plugins/react/babel.min.js' %}"></script>
+
+        <!-- Load our React component. -->
+        {% block extra_js %} {% endblock %}
+    </body>
+</html>

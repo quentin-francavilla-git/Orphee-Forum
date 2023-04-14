@@ -1,0 +1,48 @@
+.login_box {
+    background: white;
+    background-blend-mode: darken;
+    border-radius: 15px;
+    border: solid #720131;
+    width: auto;
+    height: auto;
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    margin-top: 100px;
+    max-width: 600px;
+}
+
+.reset_password {
+    padding: 10px;
+    color: white;
+    text-decoration: underline;
+}
+
+.login_box_title {
+    color: #720131;
+    font-size: 3em;
+}
+
+.login_form {
+    padding: 30px;
+}
+
+.success_connection {
+    padding-top: 20px;
+    color: white;
+}
+
+.success_connection a,
+a:hover,
+a:visited,
+a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+.error_connection {
+    padding-top: 20px;
+    color: #FFBC38
+}

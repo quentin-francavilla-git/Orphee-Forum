@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content_wrapper %}
+
+<link rel="stylesheet" href="../../../static/dist/css/topics.css">
+<title>Messagerie</title>
+
+<div class="topics_container" style="padding: 2rem 2rem;">
+
+  <div class="title">
+    <h1>Messagerie</h1>
+  </div>
+
+  <div class="topics_list">
+    <div>
+      <table class="topics_table_elements">
+        {% if not user.is_authenticated %}
+        <tr>
+          <td>Vous devez être connecté pour accéder à cette page !</td>
+        </tr>
+        {% endif %}
+        {% for i in messages %}
+        <tr>
+          <td><img src="../../../static/dist/img/topic.png" class="topic_icon"/>
+            <a href="/private_message/{{i.name}}">
+            {{i.name}}
+          </a></td>
+          <td>{{i.date}}</td>
+        </tr>
+        {% endfor %}
+
+      </table>
+    </div>
+
+
+  </div>
+
+</div>
+
+{% endblock %}

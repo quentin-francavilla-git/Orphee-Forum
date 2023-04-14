@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% load static %} {% block content_wrapper %}
+
+<link rel="stylesheet" href="../../../static/dist/css/index.css" />
+<title>Bienvenue</title>
+
+<div class="index_container">
+  <div class="welcome">
+    <h1>Conditions générales d'utilisation</h1>
+  </div>
+
+  <div>
+    <h3>Veuillez lire attentivement les conditions ci-dessous :</h3>
+      <iframe src="../../../static/dist/cgu.pdf" width="90%" height="800"></iframe>
+  </div>
+
+  <div style="padding-top:50px;padding-bottom: 100px;">
+    <button class="regular_button" onclick="location.href='/register'">
+      Retour
+    </button>
+  </div>
+  
+</div>
+
+
+{% endblock %}

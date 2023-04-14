@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content_wrapper %}
+<link rel="stylesheet" href="../../../static/dist/css/register.css">
+<title>Inscription</title>
+<div class="content-wrapper">
+    <div class="register_box">
+        <div class="register_form">
+            <div class="register_box_title">
+                <p>Inscription</p>
+            </div>
+            <div>
+                <!-- <div id="like_button_container"></div> -->
+                <form action="/register" method="post">
+                    <div>
+                        {% csrf_token %}
+                        {{ registration_form }}
+                        <input type="submit" value="S'inscrire" class="regular_button" style="margin-top:50px;">
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <a href="/cgu" style="color: white;text-decoration: underline;">Avant de vous inscrire, vous acceptez les conditions générales du forum</a>
+                    </div>
+
+                </form>
+
+                {% if formError == True %}
+                    <div class="error_registration">
+                        <p>Votre inscription a échoué.</p>
+                    </div>
+                {% elif formError == False %}
+                    <div class="success_registration">
+                        <p>Fécilications ! Vous êtes maintenant inscrite sur le forum !</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

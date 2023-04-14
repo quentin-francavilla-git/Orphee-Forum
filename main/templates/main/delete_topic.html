@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content_wrapper %}
+
+<link rel="stylesheet" href="../../../static/dist/css/topics.css">
+<title>Liste des topics</title>
+
+<div class="delete_container">
+  {% if not deleted %}
+  <div>
+    <h2>Êtes-vous sûr de vouloir supprimer ce topic et tous les messages associés ?</h2>
+  </div>
+
+  <div class="content">
+    <p>Titre du topic : <span style="font-weight:bold;text-decoration: underline;">{{title}}</span></p>
+    <button class="regular_button" onclick="location.href='/delete_topic/{{id}}/execute'">
+      Je confirme la suppression du topic
+    </button>
+  </div>
+  {% else %}
+    <div>
+      <h2>Topic supprimé !</h2>
+      <button class="regular_button" onclick="location.href='/topics'">
+        Retourner à la liste des topics
+      </button>
+    </div>
+  {% endif %}
+</div>
+
+{% endblock %}

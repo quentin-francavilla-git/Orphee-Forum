@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content_wrapper %}
+<link rel="stylesheet" href="../../../static/dist/css/delete.css">
+<title>Inscription</title>
+<div class="content-wrapper">
+    <div class="delete_box">
+        <div class="delete_form">
+            <div class="delete_box_title">
+                <p>Pour supprimer votre compte, renseignez votre mot de passe</p>
+            </div>
+            <div>
+                <!-- <div id="like_button_container"></div> -->
+                <form action="/delete" method="post">
+                    <div>
+                        {% csrf_token %}
+                        {{ delete_form }}
+                        <input type="submit" value="Se connecter" class="regular_button">
+                    </div>
+
+                    {% if messages %}
+                    {% for message in messages %}
+
+                    {% if message.tags == 'error' %}
+                    <div class="error_connection">
+                        {{ message }}
+                    </div>
+                    {% endif %}
+
+                    {% if message.tags == 'success' %}
+                    <div class="success_connection">
+                        {{ message }}
+                    </div>
+                    {% endif %}
+
+                    {% endfor %}
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

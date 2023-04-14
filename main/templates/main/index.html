@@ -1,0 +1,98 @@
+{% extends 'base.html' %} {% load static %} {% block content_wrapper %}
+
+<link rel="stylesheet" href="../../../static/dist/css/index.css" />
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
+<title>Bienvenue</title>
+
+<div class="index_container">
+    <div class="welcome">
+        <h1 class="animate__animated animate__fadeInDown">
+            Bienvenue sur le forum Orphée
+        </h1>
+        <div class="welcome-section">
+            <div>
+                <img
+                    class="animate__animated animate__fadeInLeft"
+                    style="padding-top: 50px"
+                    src="../../../static/dist/img/welcome.svg"
+                    type="image/svg+xml"
+                />
+                <button
+                    class="animate__animated animate__fadeInUp regular_button intro_button"
+                    onclick="location.href='/topics'"
+                >
+                    Consulter le forum
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <p>
+                Avec le forum Orphée nous souhaitons permettre à toute personne
+                qui fait face à des violences domestiques de ne plus se sentir
+                seule et démunie.
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <p>
+            La violence domestique, est un comportement violent, abusif ou
+            menaçant dans une relation. Il existe de nombreuses formes de
+            violence domestique, y compris la violence émotionnelle, sexuelle,
+            sociale, financière, mentale et physique.
+        </p>
+    </div>
+
+    <div class="help-from-forum">
+        <h3>Le forum Orphée peut vous aider si :</h3>
+        <ul>
+            <li>vous êtes dans une relation abusive</li>
+            <li>vous ne savez pas quoi faire de votre relation abusive</li>
+            <li>vous ne savez pas où aller pour obtenir de l'aide.</li>
+            <li>
+                vous souhaitez partager votre histoire pour aider d’autre
+                personne.
+            </li>
+        </ul>
+    </div>
+
+    <div class="how-to-protect">
+        <h3>Comment pouvez-vous vous protéger ?</h3>
+        <p>
+            L'agresseur peut essayer de vous contrôler en minimisant la gravité
+            de ce qu'il vous fait. Par conséquent, il vous est très facile de
+            sous-estimer à quel point il est dangereux. Il est très important de
+            vous protéger si vous sentez que vous êtes victime de violence. Vous
+            n'avez jamais à le faire seul. Il est vraiment important que vous
+            ayez du soutien.
+        </p>
+        <br /><br /><br />
+    </div>
+</div>
+
+<div class="video-container">
+    <div class="video-desc">
+        <h1>Orphée</h1>
+        <p>
+            Alerter <span>rapidemment</span> et <span>discrètement</span> en cas
+            de violences conjugales
+        </p>
+    </div>
+    <div class="video-icon">
+        <a
+            href="https://www.youtube.com/watch?v=Bl8zlyET3U4&feature=emb_title"
+            class="play_button"
+        >
+            <img src="../static/dist/img/play-button.png" width="200px" />
+        </a>
+    </div>
+</div>
+
+{% endblock %}

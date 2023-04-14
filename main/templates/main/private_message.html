@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content_wrapper %}
+
+<link rel="stylesheet" href="../../../static/dist/css/topics.css">
+<title>Liste des topics</title>
+
+<div class="topic_container">
+  {% if sameAuthor %}
+    <h1>Vous ne pouvez pas écrire un message à vous même !</h1>
+  {% elif not user.is_authenticated %}
+    <h1>Vous ne pouvez pas envoyer de message privé sans être connecté !</h1>
+  {% else %}
+    <h1>Messages privés avec {{pseudo}}</h1>
+
+
+    {% for message in messages %}
+    <div class="message_container">
+        <div class="author">
+            <p>
+                • Écrit par: {{message.sender}}</a>, le {{ message.date|date:"d/m/Y à H:i" }} • 
+                {% if user|stringformat:"s" == message.author|stringformat:"s" %}
+                    <a href="/delete_message/{{message.id}}/{{id_topic}}" class="delete_message">supprimer</a>
+                {% endif %}
+            </p>
+        </div>
+        <div>
+            <p style="white-space: pre-line; margin-top: 20px;">{{ message.message }}</p>
+        </div>
+    </div>
+  {% endfor %}
+
+  <div class="answer_field">
+    <div>
+        <h3>Envoyer un message à {{pseudo}}</h3>
+    </div>
+    <form action="/private_message/{{pseudo}}/post/" method="post">
+        <div style="display:flex;flex-direction: column;">
+            {% csrf_token %}
+            {{ messageform }}
+            <input type="submit" value="Envoyer" class="regular_button">
+        </div>
+    </form>
+</div>
+</div>
+{% endif %}
+
+{% endblock %}

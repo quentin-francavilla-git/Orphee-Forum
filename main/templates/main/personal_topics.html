@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content_wrapper %}
+
+<link rel="stylesheet" href="../../../static/dist/css/topics.css">
+<title>Liste des topics</title>
+
+{% if topics|length > 0 %}
+
+  <div class="container" style="padding: 2rem 2rem;">
+    <div class="title">
+        <h1>Mes topics</h1>
+      </div>
+    <div class="topics_list">
+      <div>
+        <table class="topics_table_elements">
+          {% for i in topics %}
+          <tr>
+            <td><img src="../../../static/dist/img/topic.png" class="topic_icon" /><a href="/topic/{{i.id}}">{{i.title}}</a></td>
+            <td>{{i.date}}</td>
+            <td>
+              {% if not i.anonymous %}
+                {{i.author}}
+              {% else %}
+                <p>Anonyme</p>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+{% else %}
+  <div class="container" style="text-align: center;">
+    <h1>Vous n'avez pas encore de topic 😢</h1>
+    <button class="regular_button" onclick="location.href='/new_topic'">
+      Créer un nouveau topic
+    </button>
+  </div>
+{% endif %}
+
+{% endblock %}

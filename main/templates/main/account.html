@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% load static %} {% block content_wrapper %}
+
+<link rel="stylesheet" href="../../../static/dist/css/index.css" />
+<title>Mon compte</title>
+
+<div class="container" style="padding: 2rem 2rem">
+    <div class="welcome">
+        <h1>Mon espace personnel</h1>
+    </div>
+
+    <div class="intro">
+        <p>Pseudonyme: {{ user }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Date d'inscription: {{ user }}</p>
+        <p></p>
+
+        <div>
+            <a href="/logout">Se déconnecter.</a>
+        </div>
+        <div>
+            <a href="/delete">Supprimer mon compte.</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

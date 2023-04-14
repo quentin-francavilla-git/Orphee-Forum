@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "Poppins";
+    src: url("../fonts/PoppinsRegular.ttf");
+}
+
+.regular_button {
+    background: #720131;
+    color: white;
+    font-family: 'PoppinsBold';
+    cursor:pointer;
+    border-width: 0px;
+    width: 253px;
+    height: 52px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.regular_button:hover {
+    background: #930641;
+}
+
+
+.regular_input {
+    width: 437px;
+    max-width: 90%;
+    height: 47px;
+    background: #EFEFEF;
+    border-radius: 10px;
+    font-size: 18px;
+    border-width: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Poppins';
+}
+
+.regular_textarea {
+    max-width: 90%;
+    background: #EFEFEF;
+    border-radius: 10px;
+    font-size: 18px;
+    border-width: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Poppins';
+    padding-left: 10px;
+}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content_wrapper %}
+
+<link rel="stylesheet" href="../../../static/dist/css/topics.css">
+<title>Liste des topics</title>
+
+<div class="topic_container">
+    <h1>Modifier mon topic</h1>
+    {% if user|stringformat:"s" == author|stringformat:"s" %}
+            <div class="message_edit">
+                <form action='/edit_topic/{{id_topic}}/post/' method="post" >
+                    <div style="display:flex;flex-direction: column;">
+                        {% csrf_token %}
+                        <textarea rows="30" class="message_container" name="message" id="message">{{message}}</textarea>
+                        <input id="idTopic" name="idTopic" type="hidden" value={{id_topic}}>
+                        <input type="submit" value="Sauvegarder" class="regular_button">
+                    </div>
+                </form>
+            </div>
+    {% endif %}
+</div>
+
+<footer id="end"></footer>
+
+{% endblock %}

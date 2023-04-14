@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load static %} {% block content_wrapper %}
+
+<link rel="stylesheet" href="../../../static/dist/css/topics.css" />
+<title>Liste des topics</title>
+
+<div class="topics_container" style="padding: 2rem 2rem">
+    <div class="title">
+        <h1>Liste des topics</h1>
+        <button class="regular_button" onclick="location.href='/new_topic'">
+            Créer un nouveau topic
+        </button>
+    </div>
+
+    <div class="topics_list">
+        <div>
+            <table class="topics_table_elements">
+                {% for i in topics %}
+                <tr>
+                    <td>
+                        <img
+                            src="../../../static/dist/img/topic.png"
+                            class="topic_icon"
+                        /><a href="/topic/{{i.id}}">{{i.title}}</a>
+                    </td>
+                    <td>{{i.date}}</td>
+                    <td>
+                        {% if not i.anonymous %} {{i.author}} {% else %}
+                        <p>Anonyme</p>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content_wrapper %}
+<link rel="stylesheet" href="../../../static/dist/css/login.css">
+<title>Inscription</title>
+<div class="content-wrapper">
+    <div class="login_box">
+        <div class="login_form">
+            <div class="login_box_title">
+                <p>Connexion</p>
+            </div>
+            <div>
+                <!-- <div id="like_button_container"></div> -->
+                <form action="/login" method="post">
+                    <div>
+                        {% csrf_token %}
+                        {{ login_form }}
+                        <input type="submit" value="Se connecter" class="regular_button" style="margin-top:50px;">
+                        <div class="reset_password">
+                            <a href="/reset_password" style="color: #720131;text-decoration:underline">Mot de passe oublié</a>
+                        </div>
+                    </div>
+                </form>
+                {% if formError %}
+                <div class="error_connection">
+                    <p>La connexion a écouché</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <img src="../../../static/dist/img/love.svg" width="400"/>
+</div>
+{% endblock %}

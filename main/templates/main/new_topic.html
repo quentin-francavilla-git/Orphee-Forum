@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content_wrapper %}
+
+<link rel="stylesheet" href="../../../static/dist/css/topics.css">
+<title>Liste des topics</title>
+
+<div class="container">
+
+    <div class="topics_table">
+        <h1>Création d'un nouveau topic</h1>
+
+
+        {% if not user.is_authenticated %}
+            <div>
+                <p>Vous devez être connecté pour accéder à cette page.</p>
+                <button class="regular_button" onclick="location.href='/login'">
+                    Se connecter
+                </button>
+            </div>
+        {% endif %}
+        {% if topic_success and user.is_authenticated %}
+            <div>
+                <p>Votre topic a été posté avec succès !</p>
+                <button class="regular_button" onclick="location.href='/topics'">
+                    Retourner à la liste des topics
+                </button>
+            </div>
+        {% endif %}
+        {% if new_topic and user.is_authenticated %}
+            <form action="/post_topic" method="post">
+                <div style="display:flex;flex-direction: column;">
+                    {% csrf_token %}
+                    {{ new_topic }}
+                    <input type="submit" value="Publier" class="regular_button">
+                </div>
+
+                {% if messages %}
+                {% for message in messages %}
+
+                {% if message.tags == 'error' %}
+                <div class="error_connection">
+                    {{ message }}
+                </div>
+                {% endif %}
+
+                {% if message.tags == 'success' %}
+                <div class="success_connection">
+                    {{ message }}
+                </div>
+                {% endif %}
+
+                {% endfor %}
+                {% endif %}
+        {% endif %}
+        </form>
+    </div>
+
+    <div>
+
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,127 @@
+.topic_container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+}
+
+.title {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.topics_table {
+    width: 80%;
+
+    margin-left: auto;
+    margin-right: auto;
+    color: #616161;
+    margin-bottom: 100px;
+}
+
+.topics_table_elements {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #616161;
+    background-color: #f3f3f3;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+@media only screen and (min-width: 600px) {
+    .topics_table td {
+        font-size: 20px;
+    }
+    .topics_table th {
+        font-size: 30px;
+    }
+    .topic_icon {
+        width: 25px;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .topic_icon {
+        display: none;
+    }
+}
+
+.topics_list {
+    margin: 3rem 0;
+}
+
+.topics_list a {
+    padding: 0rem 1rem;
+    color: rgba(114, 1, 49, 1);
+}
+
+.topics_table th {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
+
+.topics_table td {
+    padding: 5px;
+}
+
+.post_message {
+    margin-top: 50px;
+}
+
+/*
+.topic_intro {
+    width:100%;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}*/
+
+@media only screen and (min-width: 600px) {
+    .message_container {
+        /*transform: translateX(-50%);*/
+        padding: 0.75rem 1.2rem;
+        border-radius: 0.4rem;
+        border: 1px solid #c5c5c5;
+        margin-top: 30px;
+    }
+
+    .edit_buttons {
+        display: flex;
+    }
+    /*.topic_intro {
+        display: flex;
+    }*/
+}
+
+.message_edit {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: 2px;
+}
+
+.author p {
+    font-size: 14px;
+    color: rgba(114, 1, 49, 1);
+}
+
+.answer_field {
+    padding: 4rem 2rem;
+}
+
+.answer_field h3 {
+    text-align: left;
+}
+
+.regular_button {
+    margin-top: 20px;
+}
+
+.delete_container {
+    text-align: center;
+}
+
+.delete_message {
+    color: rgb(30, 14, 21);
+}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content_wrapper %}
+
+<link rel="stylesheet" href="../../../static/dist/css/topics.css">
+<title>Liste des topics</title>
+
+<div class="topic_container">
+    <div class="topic_intro">
+        <h1>{{title}}</h1>
+        {% if user|stringformat:"s" == author|stringformat:"s" %}
+            <div class="edit_buttons">
+                
+                <button class="regular_button" onclick="location.href='/edit_topic/{{id_topic}}/'" style="margin-right:30px">Modifier</button>
+                <button class="regular_button" onclick="location.href='/delete_topic/{{id_topic}}/confirm'">Supprimer</button>
+            </div>
+        {% endif %}
+    </div>
+    <div class="message_container">
+        <div class="author">
+            {% if is_anonymous %}
+            <p>Ce topic a été publié anonymement, le {{date|date:"d/m/Y à H:i"}}</p>
+            {% else %}
+            <p>Écrit par: <a href="/private_message/{{author}}">{{author}}</a>, le {{date|date:"d/m/Y à H:i"}}</p>
+            {% endif %}
+        </div>
+        <div>
+            <p style="white-space: pre-line; margin-top: 20px;">{{message}}</p>
+        </div>
+    </div>
+
+    {% for message in messages %}
+        <div class="message_container">
+            <div class="author">
+                <p>
+                    Écrit par: <a href="/private_message/{{message.author}}">{{message.author}}</a>, le {{ message.date|date:"d/m/Y à H:i" }} • 
+                    {% if user|stringformat:"s" == message.author|stringformat:"s" %}
+                        <a href="/delete_message/{{message.id}}/{{id_topic}}" class="delete_message">Supprimer</a>
+                        <span> - </span>
+                        <a href="/edit_message/{{message.id}}/" class="delete_message">Modifier</a>
+                    {% endif %}
+                    {% if message.edited == True %}
+                        <span>(message édité)</span>
+                    {% endif %}
+                </p>
+            </div>
+            <div>
+                <p style="white-space: pre-line; margin-top: 20px;">{{ message.message }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+        <div class="answer_field">
+            <div>
+                <h3>Écrire une réponse</h3>
+            </div>
+            <form action="/post_answer" method="post">
+                <div style="display:flex;flex-direction: column;">
+                    {% csrf_token %}
+                    {{ new_message }}
+                    <input id="idTopic" name="idTopic" type="hidden" value={{id_topic}}>
+                    <input type="submit" value="Envoyer" class="regular_button">
+                </div>
+            </form>
+        </div>
+    {% endif %}
+
+
+</div>
+
+<footer id="end"></footer>
+
+{% endblock %}
